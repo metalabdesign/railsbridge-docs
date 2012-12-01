@@ -11,6 +11,7 @@ Because these 4 actions (CRUD) are so common, rails includes the scaffold comman
   MARKDOWN
 end
 
+
 steps do
   step do
     console "rails server"
@@ -19,8 +20,10 @@ steps do
   step do
     message "Point your browser to [http://localhost:3000/topics](http://localhost:3000/topics)"
     message "You should see a page listing topics that looks something like this:"
-    img :src => "img/Seattle_topic_list_page.png", :alt => "Topic List Page"
+
+    img :src => image_path("Seattle_topic_list_page.png"), :alt => "Topic List Page"
   end
+
 
   step do
     message <<-MARKDOWN

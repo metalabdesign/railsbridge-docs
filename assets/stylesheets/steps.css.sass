@@ -1,0 +1,131 @@
+@import "_base"
+
+
+input.big_checkbox[type=checkbox]
+  display: none
+
+  + label
+     height: $big_checkbox_size
+     width: $big_checkbox_size
+     display: inline-block
+     padding: 0 0 0 0px
+     margin: 0 4px -8px 0
+     background-color: white
+     z-index: 2
+     border: 4px solid #dadada
+     +border-radius(10px)
+
+    &:hover
+       background-image: url(/img/check-dim.png)
+       cursor: pointer
+
+  &:checked
+
+    + label
+      background-image: url(/img/check.png)
+
+
+
+
+
+
+
+
+
+
+.step
+  h1 > span.prefix
+    color: blue
+
+  blockquote
+    border-left: 1px dotted blue
+    padding-left: 1.5em
+    margin-left: .25em
+
+img.noborder
+  border: none
+  display: inline
+
+.centered
+  text-align: center
+
+.message img.icon
+  float: left
+  border: none
+  margin-right: 1em
+
+.message.todo
+  margin: 1em
+  background-color: #f5e1f0
+  font-style: italic
+  padding: .25em 1em
+
+.important, .tip
+  padding: .5em 1em
+  margin: 1em 0
+
+.important
+  border: 1px solid red
+
+.tip
+  border: 1px solid blue
+  padding: 1em
+
+.tip > span
+  font-size: 14pt
+
+.tip span.name
+  font-weight: bold
+
+.tip span.prefix
+  font-weight: bold
+  color: #E77902
+
+.step.next_step p.link:after
+  content: " \u2192"
+
+div.back:before
+  content: "\u2190 "
+
+.steps
+
+.doc>div>h1
+  padding-left: .25em
+
+.doc>div
+  padding-bottom: 1em
+
+.goals>h1
+  background-color: #FECACD
+
+.steps>h1
+  background-color: #FBFFCA
+
+.explanation>h1
+  background-color: #C8FFC9
+
+.deploying>h1
+  background-color: #B0DEE7
+
+.requirements>h1
+  background-color: #93B5DA
+
+.discussion > h1
+  background-color: #92F59A
+
+.hints > h1
+  background-color: #86DFD4
+
+.tools_and_references > h1
+  background-color: #C8A9E0
+
+.console > pre
+  border: 4px solid #dde
+  +border-radius(4px)
+  background-color: black
+  color: white
+
+.result > pre
+  border: 4px solid #dde
+  +border-radius(4px)
+

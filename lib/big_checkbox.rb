@@ -1,38 +1,4 @@
-require 'erector_scss'
-
 class BigCheckbox < Erector::Widget
-  # needs :size => "48px"  # todo
-    
-  external :style, scss(<<-CSS)
-  $big_checkbox_size: 48px;
-  
-  input.big_checkbox[type=checkbox] {
-    display:none;
-    + label {
-       height: $big_checkbox_size;
-       width: $big_checkbox_size;
-       display:inline-block;
-       padding: 0 0 0 0px;
-       margin: 0 4px -8px 0;
-       background-color: white;
-       z-index: 2;
-       border: 4px solid #dadada;
-       @include border-radius(10px);
-    }
-     
-    + label:hover {
-       background-image: url(/img/check-dim.png);
-       cursor: pointer;
-    }
-  }
-  
-  input.big_checkbox[type=checkbox]:checked {
-    + label {
-      background-image: url(/img/check.png);
-    }
-  }
-  CSS
-  
   # for testing -- set the next number
   def self.number= checkbox_number
     @@checkbox_number = checkbox_number

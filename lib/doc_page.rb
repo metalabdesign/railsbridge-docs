@@ -4,22 +4,11 @@ require 'pygments'
 require 'site_index'
 
 class InstallfestExternalRenderer < ExternalRenderer
-  # render <style> tags plainly, without "text/css" (which browsers will assume by default)
-  #   or the xml:space attribute (not allowed or required in html5)
-  def inline_styles
-    rendered_externals(:style).each do |external|
-      style(external.options) { rawtext external.text }
-    end
 
-    if Object.const_defined?(:Sass)
-      rendered_externals(:scss).each do |external|
-        style(external.options) { rawtext Sass.compile(external.text) }
-      end
-    end
-  end
 end
 
 class DocPage < Erector::Widgets::Page
+  include Sprockets::Helpers
 
   needs :site_name, :doc_title, :doc_path, :page_name
   needs :back => nil
@@ -44,6 +33,7 @@ class DocPage < Erector::Widgets::Page
 
   def head_content
     title page_title
+    link :href => stylesheet_path("doc_page"), :rel => "stylesheet", :type => "text/css"
     script :src => "/jquery-1.6.1.js"
   end
 
@@ -55,150 +45,7 @@ class DocPage < Erector::Widgets::Page
     "#{doc_title} - #{site_title}"
   end
 
-
-  # this is how to load the Open Sans font when we know we're online
-  # external :style,  <<-CSS
-  # @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700);
-  # CSS
-
-  # but this is to load the Open Sans font when we might be offline
-  external :style,  <<-CSS
-  @import url(/font/opensans.css);
-  CSS
-
   external :style, Pygments.css(".highlight", style: "monokai")
-
-  external :style,  <<-CSS
-  body {
-    font-family: 'Open Sans',helvetica,arial,sans-serif;
-    padding: 0;
-    margin: 0;
-  }
-
-  h1 {
-    font-size: 2em;
-    -webkit-margin-before: 0;
-    -webkit-margin-after: 0;
-    -webkit-margin-start: 0;
-    -webkit-margin-end: 0;
-  }
-
-  .top {
-    margin-bottom: 1em;
-    padding: 2px 6px;
-  }
-  .top h1 {
-    font-size: 2.5em;
-    font-weight: 800;
-  }
-  .top a {
-    text-decoration: none;
-  }
-  .top a:visited {
-    color: black;
-  }
-
-  .bottom {
-    min-height: 60px;
-    text-align: center;
-    border-top: 1px solid #333;
-  }
-
-  /* toc = Table of Contents */
-
-  .toc {
-    background: #e2f2f2;
-    padding: 0 0 1em 0;
-    margin: 0 0 1em 1em;
-    border: 1px solid blue;
-    float: right;
-    width: 26em;
-    overflow-x: hidden;
-    display: none;
-    /* if the toc isn't "positioned", images will show on top of it */
-    position: relative;
-  }
-
-  .toc h1 {
-    border-bottom: 1px solid blue;
-    padding-left: 12px;
-  }
-
-  .toc ul {
-    margin-left: 12px;
-    padding-left: 12px;
-  }
-
-  .toc li a {
-    font-size: 11pt;
-    padding: 1px 2px;
-    border: 1px solid #e2f2f2;
-    text-decoration: none;
-    display: block; /* fill the entire containing li */
-  }
-
-  .toc li a:hover {
-    background: #a2aBFD;
-    border-color: blue;
-    cursor: pointer;
-    font-weight: bold;
-  }
-
-  .toc .current {
-    font-weight: bold;
-    padding: 1px 2px
-  }
-
-  /**/
-
-  .main {
-    padding-left: 4em;
-  }
-  .main h1.doc_title {
-    background: #e2e2f2;
-    padding: .5em .5em .25em;
-    margin-bottom: .25em;
-    margin-left: -2em;
-  }
-
-  .doc {
-    max-width: 50em;
-  }
-
-  .doc pre {
-    background: #f2f2f2;
-    padding: .5em 1em;
-    font-size: 13pt;
-    overflow-x: auto;
-  }
-  .doc code {
-    font-size: 13pt;
-    background: #f2f2f2;
-    padding-left: 4px;
-    padding-right: 4px;
-  }
-  .doc h1 {
-    border-bottom: 1px solid blue;
-    margin-top: 1em;
-    margin-left: -.5em;
-  }
-
-  .top .top_links {
-    float: right;
-    margin-right: 8px;
-  }
-  .top a.top_link {
-    float: right;
-    margin: 2px;
-  }
-
-  img {
-    border: 1px solid #aaa;
-    margin: auto;
-    display: block;  /* otherwise centering doesn't happen */
-  }
-
-  CSS
 
   class TopLink < Erector::Widget
     needs :name, :href, :onclick => nil

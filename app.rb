@@ -1,8 +1,3 @@
-require 'sinatra'
-require 'digest/md5'
-require 'erector'
-require 'redcarpet'
-
 here = File.expand_path File.dirname(__FILE__)
 lib = File.expand_path "#{here}/lib"
 $: << lib
@@ -18,14 +13,42 @@ require "deck/rack_app"
 class InstallFest < Sinatra::Application  # should this be Sinatra::Base instead?
   include Erector::Mixin
 
+  set :sprockets, Sprockets::Environment.new(root)
+  set :assets_prefix, '/assets'
+  set :digest_assets, false
+
+
+  configure do
+    # Setup Sprockets
+    sprockets.append_path File.join(root, 'assets', 'stylesheets')
+    sprockets.append_path File.join(root, 'assets', 'javascripts')
+    sprockets.append_path File.join(root, 'assets', 'images')
+    sprockets.append_path File.join(root, 'assets', 'fonts')
+
+
+    # Configure Sprockets::Helpers (if necessary)
+    Sprockets::Helpers.configure do |config|
+      config.environment = sprockets
+      config.prefix      = assets_prefix
+      config.digest      = digest_assets
+      config.public_path = public_folder
+    end
+  end
+
+  helpers do
+    include Sprockets::Helpers
+  end
+
   def initialize
     super
-    @here = File.expand_path(File.dirname(__FILE__))
     @default_site = "installfest"
     set_downstream_app # todo: test
   end
 
-  attr_reader :here
+  def root
+    self.class.root
+  end
+
   attr_writer :default_site
 
   def default_site
@@ -47,13 +70,13 @@ class InstallFest < Sinatra::Application  # should this be Sinatra::Base instead
   def sites_dir= dir
     @sites_dir = dir.tap { set_downstream_app }
   end
-  
+
   def set_downstream_app
     @app = ::Deck::RackApp.public_file_server
   end
-  
+
   def sites_dir
-    @sites_dir || "#{@here}/sites"
+    @sites_dir || "#{root}/sites"
   end
 
   def sites
@@ -82,7 +105,7 @@ class InstallFest < Sinatra::Application  # should this be Sinatra::Base instead
   def title_for_page page_name
     page_name.split(/[-_]/).map do |w|
       w == "osx" ? "OS X" : w.capitalize
-    end.join(' ')    
+    end.join(' ')
   end
 
   def render_page
@@ -97,7 +120,7 @@ class InstallFest < Sinatra::Application  # should this be Sinatra::Base instead
       }
 
       case ext
-        
+
       when "md"
         if doc_path =~ /\.deck\.md$/   # todo: refactor
           # todo: render with page nav elements too

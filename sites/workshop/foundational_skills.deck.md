@@ -74,11 +74,11 @@ This presentation covers the basic skills required to be a programmer...
 <table>
   <tr>
     <td>
-      <img src='img/os_x_logo.jpg'>
+      <img src='#{image_path("os_x_logo.jpg")}'>
     <td>
-      <img src='img/windows_logo.gif'>
+      <img src='#{image_path("windows_logo.gif")}'>
     <td>
-      <img src='img/linux_logo.gif'>
+      <img src='#{image_path("linux_logo.gif")}'>
   </tr>
 </table>
 

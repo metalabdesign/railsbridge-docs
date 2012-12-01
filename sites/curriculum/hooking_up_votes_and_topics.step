@@ -1,5 +1,5 @@
 goals do
-  img :alt => "topics_and_votes_table", :src => "img/topics_and_votes_table.png"
+  img :alt => "topics_and_votes_table", :src => image_path("curriculum/topics_and_votes_table.png")
   goal <<-MARKDOWN
 Because there is an explicit relationship between a topic and its
 votes, we need to specify that. In this step, we'll explicitly

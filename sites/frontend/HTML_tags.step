@@ -9,7 +9,7 @@ steps do
     message "Add some more lines of content to your HTML file. Introduce yourself."
     source_code "HTML", "Hello <em>World</em>!\n\nMy name is Rachel."
     message "Now save the file and refresh your browser."
-    message "<img src='img/hello_world_2line.png'>"
+    message "<img src='#{image_path("frontend/hello_world_2line.png")}'>"
   end
 
   step do
@@ -17,7 +17,7 @@ steps do
     message "Update your HTML with an `h1` tag and a `p` tag:"
     source_code "HTML", "<h1>Hello <em>World</em>!</h1>\n\n<p>My name is Rachel.</p>"
     message "Now save the file and refresh your browser."
-    message "<img src='img/hello_world_2line2.png'>"
+    message "<img src='#{image_path("frontend/hello_world_2line2.png")}'>"
   end
 
 end
@@ -31,7 +31,7 @@ explanation do
 
 You'll notice that even if you put in extra lines and spaces, HTML will treat any number of
 new line or space characters like there's just one space there. When you're getting started
-with HTML, this can seem like a pain, because you have to type 
+with HTML, this can seem like a pain, because you have to type
 
 MARKDOWN
 source_code "HTML", "<p>first sentence</p>\n<p>second sentence</p>"

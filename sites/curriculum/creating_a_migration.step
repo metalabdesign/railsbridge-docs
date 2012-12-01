@@ -1,5 +1,5 @@
 goals do
-  img :alt => "Topics Table", :src => "img/topics_table.png"
+  img :alt => "Topics Table", :src => image_path("curriculum/topics_table.png")
   message "The suggestotron has a list of topics that people can vote on. We'll store our topics in the database. In this step you'll do the following:"
   goal "Create a database table for topics with a title and a description"
   message "In this step we'll learn a bit about MVC (Model-View-Controller) architecture. By the end of this step you should understand the following concepts:"
@@ -32,7 +32,7 @@ end
 
 explanation do
   h2 "Explaining MVC and Records"
-  img :src => "img/mvc.png", :alt => "MVC"
+  img :src => image_path("curriculum/mvc.png"), :alt => "MVC"
   message "Rails implements a very specific notion of the **Model/View/Controller** pattern, which guides how you structure your web applications."
 
   h3 "Model"

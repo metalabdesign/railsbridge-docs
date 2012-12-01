@@ -15,7 +15,7 @@ steps do
     message "Write some styles that will apply to your `h1` and `p` tags."
     source_code "HTML", "<style type=\"text/css\" media=\"screen\">\nh1 { \n\s\sfont-size: 20px;\n\s\sborder-bottom: 1px solid #cccccc;\n}\n\np { \n\s\spadding: 10px; \n\s\sbackground-color: papayaWhip;\n}\n</style>"
     message "When you save and refresh your browser, you should see the styles you added:"
-    message "<img src='img/hello_style.png'>"
+    message "<img src='#{image_path("frontend/hello_style.png")}'>"
   end
 
 end
@@ -46,7 +46,7 @@ can **select** various elements on the page and change their **visual properties
 * The **Selector** tells the browser what elements to add that style to.
 * The **Attributes** (or **Properties**) tell the browser how to style the elements you selected.
 
-<img src='img/css.png'>
+<img src='#{image_path("frontend/css.png")}'>
 
 Don't try to memorize all the CSS properties! You can always look them up on sites like:
 
@@ -60,13 +60,13 @@ pictures of the same HTML page, but on the right side, I've turned off all the C
 applied to it. Almost all of the color and formatting disappear. The code snippets and buttons
 that were obvious with CSS styles now just look like text.
 
-<img src='img/css_bundler.png'>
+<img src='#{image_path("frontend/css_bundler.png")}'>
 
 For some great examples of the power of CSS, check out the [CSS Zen Garden](http://www.csszengarden.com/). It takes
 the same HTML, but shows it with stylesheets from a bunch of different designers applied to
 it. Here are two different designers' interpretations of the same HTML:
 
-<img src='img/css_zen.png'>
+<img src='#{image_path("frontend/css_zen.png")}'>
 
   MARKDOWN
 

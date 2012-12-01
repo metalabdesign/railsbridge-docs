@@ -21,9 +21,9 @@ steps do
     message "To add a style rule that will apply to a class, use the syntax `.class-name` for your selector. Try giving the 'important' class a green border. Add this rule inside of your `style` tag:"
     source_code "CSS", ".important { \n\s border: 1px solid green;\n}"
     message "Refresh the page in the browser. You'll see something like this:"
-    message "<img src='img/css_class.png'>"
+    message "<img src='#{image_path("frontend/css_class.png")}'>"
   end
-  
+
   step do
     message "Let's wrap your name in a `span` tag and give that an ID of 'user-name'. It'll look something like this:"
     source_code "HTML", "\s\s<h1>Hello <em>World</em>!</h1>\n\s\s<p class=\"important\">My name is\n\s\s <span id=\"user-name\">Rachel</span>.</p>\n\n\s\s<p>In my free time, I enjoy math, Railsbridge, soccer,\n\s\s and shopping for fancy hats.</p>\n</body>\n</html>"
@@ -34,14 +34,14 @@ steps do
     message "To add a style rule that will apply to an id, use the syntax `#id-name` for your selector. Try making the 'user-name' id look bold. Add this rule inside of your `style` tag:"
     source_code "CSS", "#user-name { \n\s font-weight: bold; \n}"
     message "(Note: The span is just an element that lets you apply a class, id, or other attribute to a string of text. Browsers won't give it any styling by default.) But once you add your style rule and refresh the page in the browser, you'll see something like this:"
-    message "<img src='img/css_id.png'>"
+    message "<img src='#{image_path("frontend/css_id.png")}'>"
   end
 
 end
 
 
 explanation do
-  
+
   message <<-MARKDOWN
 
 ## Why Attributes?
@@ -54,13 +54,13 @@ HTML tags don't just wrap content. They can also convey information about that e
 
 Sometimes, attributes will have an obvious visual effect. For example, if you're coding
 form inputs, you'll use attributes to tell the browser what type of input they are,
-and the results will be easy to tell apart. This input: 
+and the results will be easy to tell apart. This input:
 
   MARKDOWN
   source_code "HTML", "<input type='radio' name='rando-radio'>"
   message <<-MARKDOWN
 
-looks like a radio button: <input type='radio' name='rando-radio'>, but 
+looks like a radio button: <input type='radio' name='rando-radio'>, but
 
   MARKDOWN
   source_code "HTML", "<input type='password' name='fake-password' value='ick'>"
@@ -74,7 +74,7 @@ looks like a password text input: <input type='password' name='rando-radio' valu
   paragraphs a class of "important" and use that class to highlight them.
   Even if you only have one paragraph that's important now, you might
   want to add more later.
-  
+
 * An **id** is a unique label. Use it to identify things you'd only have one
   of. For example, if you ran a news website, you would only have one element
   on a page that would serve as a masthead, and you could give it an id

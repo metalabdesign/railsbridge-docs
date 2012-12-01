@@ -8,7 +8,7 @@ steps do
 
   step do
     message "We started simple, but most HTML pages have some other tags we left out. Those tags are `doctype`, `html`, `head`, and `body`. Try adding them to your HTML file now, matching this order:"
-    message "<img src='img/hello_structure.png'>"
+    message "<img src='#{image_path("frontend/hello_structure.png")}'>"
     message "Now refresh your browser. Everything should look mostly the same."
   end
 
@@ -16,7 +16,7 @@ steps do
     message "The `head` tag doesn't even show up on the page &mdash; it's meant to contain extra info _about_ your file. Let's add a title to it. Put this line inside the `head` tag:"
     source_code "HTML", "<title>My Sample HTML page</title>"
     message "When you refresh your browser, you should see the title at the top of the window:"
-    message "<img src='img/hello_title.png'>"
+    message "<img src='#{image_path("frontend/hello_title.png")}'>"
   end
 
 end
@@ -28,7 +28,7 @@ explanation do
 
 ## The HTML tag and Doctype Clarify the Obvious
 
-The `<!DOCTYPE html>` tells the browser which flavor of HTML you're using. You may see 
+The `<!DOCTYPE html>` tells the browser which flavor of HTML you're using. You may see
 older doctypes out there that are longer and a lot more complicated, from when people
 used various HTML and XHTML versions, but if you create a new page, you can usually just
 use this short version. It tells your browser you're using the latest version of HTML,

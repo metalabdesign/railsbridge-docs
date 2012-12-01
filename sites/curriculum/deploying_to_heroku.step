@@ -92,7 +92,7 @@ First, we had to do some work to make Heroku happy with our application. This re
   MARKDOWN
 
   message "You should be able to deploy your application any time it's in a good, working state. Your typical workflow will look like:"
-  img :src => "img/workflow.png", :alt => "workflow", :style => "border: none"
+  img :src => image_path("curriculum/workflow.png"), :alt => "workflow", :style => "border: none"
   ol do
     li { message "Add or change some code" }
     li { message "Commit your changes (`git commit`)" }

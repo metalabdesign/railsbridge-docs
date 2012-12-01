@@ -159,7 +159,7 @@ class Step < Erector::Widget
   def message text = nil, options = {}
     classes = (["message"] + [options[:class]]).compact
     div :class => classes do
-      img.icon src: "/img/#{options[:icon]}.png" if options[:icon]
+      img.icon src: image_path("#{options[:icon]}.png") if options[:icon]
       rawtext(markdown.render text) unless text.nil?
       yield if block_given?
     end

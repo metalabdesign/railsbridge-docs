@@ -4,27 +4,35 @@ goals do
 end
 
 steps do
-
   step do
     message "With just HTML, you could put a lot of content on the web, but HTML by itself usually looks plain. CSS styles allow us to control the display of HTML. Add a style tag below the `<title>` tag in the head. A standard style tag might look like this:"
-    source_code "HTML", "<style type=\"text/css\" media=\"screen\">\n\n</style>"
+    source "<style type=\"text/css\" media=\"screen\">\n</style>", :html
     message "Now refresh your browser. Everything should look the same."
   end
 
   step do
     message "Write some styles that will apply to your `h1` and `p` tags."
-    source_code "HTML", "<style type=\"text/css\" media=\"screen\">\nh1 { \n\s\sfont-size: 20px;\n\s\sborder-bottom: 1px solid #cccccc;\n}\n\np { \n\s\spadding: 10px; \n\s\sbackground-color: papayaWhip;\n}\n</style>"
+    source <<-HTML, :html
+<style type="text/css" media="screen">
+  h1 {
+    font-size: 20px;
+    border-bottom: 1px solid #cccccc;
+  }
+
+  p {
+    padding: 10px;
+    background-color: papayaWhip;
+  }
+</style>
+    HTML
     message "When you save and refresh your browser, you should see the styles you added:"
     message "<img src='#{image_path("frontend/hello_style.png")}'>"
   end
 
 end
 
-
 explanation do
-
   message <<-MARKDOWN
-
 ## What is CSS?
 
 CSS stands for __C__ascading __S__tyle__s__heets. It's a language for creating **rules** that
@@ -67,10 +75,7 @@ the same HTML, but shows it with stylesheets from a bunch of different designers
 it. Here are two different designers' interpretations of the same HTML:
 
 <img src='#{image_path("frontend/css_zen.png")}'>
-
   MARKDOWN
-
 end
 
 next_step "HTML_attributes"
-

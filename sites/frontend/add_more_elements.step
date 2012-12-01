@@ -6,7 +6,6 @@ goals do
 end
 
 steps do
-
   step do
     message "CHALLENGE: The index.html page you downloaded is a simple profile page. Do a quick read through of the HTML and see if you can guess from the context what any unfamiliar tags might do."
     message "Take 5 or 10 minutes to replace some of the existing text with some info about yourself. You don't have to write a novella, but filling in some tags is a good way to get oriented in the file. Then, save the page and refresh the browser."
@@ -27,14 +26,10 @@ steps do
     message "See if you can turn the list items under the word 'Contents' into links that jump down the page to the relevant content. They'll look like this:"
     message "<img src='#{image_path("frontend/page_anchors.png")}'>"
   end
-
-
 end
 
 explanation do
-
   message <<-MARKDOWN
-
 ## Woohoo HTML
 
 Now that you know the basics of working with HTML, the trickiest part is remembering
@@ -43,9 +38,7 @@ what tags are available. Here are some good sites you can use for reference:
 * [Sitepoint](http://reference.sitepoint.com/css)
 * [Mozilla Developer Network](https://developer.mozilla.org/en/HTML/Element)
 * [Dochub](http://dochub.io/#html/)
-
   MARKDOWN
-
 end
 
 next_step "make_columns"

@@ -29,5 +29,4 @@ describe InstallFest do
       end
     end
   end
-
 end

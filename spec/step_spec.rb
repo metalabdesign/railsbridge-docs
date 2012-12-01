@@ -93,19 +93,19 @@ RUBY
     end
   end
 
-  describe 'source_code' do
-    it "emits a block of code as a pre with class 'code'" do
-      html_doc(<<-RUBY)
-      source_code "x = 2"
+  describe 'source' do
+    it "emits a block of code as a pre" do
+      html_doc <<-RUBY
+      source "x = 2"
       RUBY
-      assert { @html == "<pre class=\"code\">x = 2</pre>" }
+      assert { @html == "<pre>x = 2</pre>" }
     end
 
     it "emits a block of code with a language directive" do
       html_doc( <<-RUBY)
-      source_code :ruby, "x = 2"
+      source "x = 2", :ruby
       RUBY
-      assert { @html == "<pre class=\"code\">\n:::ruby\nx = 2</pre>" }
+      assert { @html == "<div><div class=\"highlight\"><pre><span class=\"n\">x</span> <span class=\"o\">=</span> <span class=\"mi\">2</span>\n</pre></div></div>" }
     end
   end
   
@@ -114,7 +114,7 @@ RUBY
       html_doc(<<-RUBY)
       console "echo 'hi'"
       RUBY
-      assert { @html == "<div class=\"console\"><span>#{Step::TERMINAL_CAPTION}</span><pre>echo 'hi'</pre></div>" }
+      assert { @html == "<div class=\"console\"><span>#{Step::TERMINAL_CAPTION}</span><div><div class=\"highlight\"><pre><span class=\"nb\">echo</span> <span class=\"s1\">&#39;hi&#39;</span>\n</pre></div></div></div>" }
     end
   end
 

@@ -1,5 +1,4 @@
 message <<-MARKDOWN
-
 ### Goal
 
 To get you started with HTML, CSS, and JavaScript, the most essential building blocks
@@ -43,11 +42,9 @@ We're going to be working with:
 * A [GitHub](http://github.com) account of your own
 * The code editor of your choice.
   [Komodo Edit](http://www.activestate.com/komodo-edit) is a good open source option, if you don't have one yet.
-
 MARKDOWN
 
 message <<-MARKDOWN
-
 ### Working Effectively and Efficiently
 
 I highly recommend you do the following:
@@ -103,4 +100,3 @@ choice  do
     link "tool_installation"
   end
 end
-

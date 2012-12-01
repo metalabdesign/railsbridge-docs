@@ -4,7 +4,6 @@ goals do
 end
 
 steps do
-
   step do
     message "First, you've got to turn on your dev tools. They're hidden by default."
     message "<img src='#{image_path("frontend/devtools.png")}'>"
@@ -36,9 +35,7 @@ steps do
 end
 
 explanation do
-
   message <<-MARKDOWN
-
 ## Keep Learning with Dev Tools
 
 With good browser dev tools, you can pick apart every website you visit. If you see cool
@@ -55,8 +52,5 @@ they're done. It's a great way to keep learning as a front end developer.
 * Some Railsbridge folks maintain a [Pinterest board on Front End resources](http://pinterest.com/eanakashima/learn-the-front-end/)
 * For more tips on working with Chrome dev tools, check out this [video intro from Paul Irish](http://paulirish.com/2011/a-re-introduction-to-the-chrome-developer-tools/)
 * [Design Resources](https://kippt.com/jessicaspacekat/design-resources) - A kippt list created by [@jessicaspacekat](https://twitter.com/jessicaspacekat) of design resources for Rails Girls.
-
-
   MARKDOWN
-
 end

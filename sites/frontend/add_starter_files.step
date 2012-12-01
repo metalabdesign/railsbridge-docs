@@ -4,7 +4,6 @@ goals do
 end
 
 steps do
-  
   step do
     message "Just to speed things up, let's grab some starter files from github."
     message "Go to the [front end lesson](https://github.com/eanakashima/front-end-lesson) repository on Github and download it as a zip file."
@@ -25,13 +24,10 @@ steps do
     console "git add .\ngit commit -m 'Added starter files'\ngit push -u origin master"
     message "You just added all your changed files to the stage, commited those changes, and pushed the changed files up to github."
   end
-
 end
 
 explanation do
-  
   message <<-MARKDOWN
-
 ## What Are These Files?
 
 Just to save you some time, we've supplied a bare bones HTML document, a CSS stylesheet,
@@ -56,9 +52,7 @@ it's frequently faster to do these tasks from there, but we wanted to take this 
 to introduce you to the Github web interface. It's powerful enough to let you download
 whole projects, fork repositories, and even make basic edits to files, right from
 the browser.
-
   MARKDOWN
-
 end
 
 next_step "make_a_web_page"

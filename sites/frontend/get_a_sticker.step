@@ -3,11 +3,8 @@ message "Find a volunteer and have them watch the next steps."
 
 message "If this works - get a sticker from them for your computer!"
 
-
-
 verify "git is installed" do
   tip "Most of the time, the version numbers don't have to match exactly. In general, if the *first two* numbers match, or if the full number you have is *greater* than the one below, then you're cool."
-
   console "git --version"
   result "git version 1.7.10"
 end
@@ -19,11 +16,9 @@ Make a note of where you save it, you'll need to know in a second.
 
 Fill it with the following contents:
   MESSAGE
-
-  source_code :html,<<-HTML
+  source <<-HTML, :html
 I want a sticker! <em>Please?</em>
   HTML
-
   message "Now open the file in Chrome. You should see something like:"
   img :src => "get_a_sticker_output.png"
 end
@@ -55,7 +50,6 @@ verify "you can clone from GitHub do" do
     message "Copy the linked url and clone the repository using git"
     tip "On Mac OS X, you can paste into the Terminal like normal using `⌘+v`, Windows users can paste by right-clicking on the terminal and selecting Paste from the menu."
     console "git clone <THAT LINK YOU COPIED>"
-
     result <<-OUTPUT
 Cloning into 'mrsteven.github.com'...
 remote: Counting objects: 27, done.

@@ -4,6 +4,7 @@ require 'redcarpet'
 require 'markdown_renderer'
 
 class Step < Erector::Widget
+  include Sprockets::Helpers
 
   needs :src
   needs :doc_path

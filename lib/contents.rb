@@ -27,7 +27,7 @@ class Contents < Erector::Widget
     content = open("#{site_dir}/#{filename}").read()
 
     # (markdown) links of the form: [link text](link_page)
-    content.scan /\[.*?\]\((.*?)\)/ do |link, _|
+    content.scan /(?<!!)\[.*?\]\((.*?)\)/ do |link, _|
       next if (link =~ /^http/)
       next if (link =~ /(jpg|png)$/)
       links.push(link) if !links.include? link
@@ -130,7 +130,6 @@ class Contents < Erector::Widget
 
   def toc_link page
     link_text = page.split(/[-_]/).map{|s|s.capitalize}.join(' ')
-
     if page == page_name
       return li do
         span link_text, class: 'current'
@@ -147,6 +146,10 @@ class Contents < Erector::Widget
     ul do
       toc_items.each do |toc_item|
         if toc_item.instance_of? Array
+          puts "===================================================================================================="
+          puts "toc_item %p" % toc_item.inspect
+          puts "===================================================================================================="
+
           toc_link toc_item.first do
             toc_list toc_item[1..toc_item.length]
           end

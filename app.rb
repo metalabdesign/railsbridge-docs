@@ -41,7 +41,7 @@ class InstallFest < Sinatra::Application  # should this be Sinatra::Base instead
 
   def initialize
     super
-    @default_site = "installfest"
+    @default_site = "curriculum"
     set_downstream_app # todo: test
   end
 

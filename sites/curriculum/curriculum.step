@@ -50,14 +50,15 @@ show up for railsbridge on Saturday.
 
 You can verify that you have everything working by trying this out in your terminal:
 
-<div class="console"><pre>
+```
 $ irb
 >> 1 + 2
 => 3
 >> require "active_support"
 => true
 >> exit
-$</pre></div>
+$
+```
 
 If you can do that, you are probably good to go.
 
@@ -111,4 +112,3 @@ end</pre>
 MARKDOWN
 
 next_step "ruby_language"
-

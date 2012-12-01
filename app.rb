@@ -198,12 +198,6 @@ class InstallFest < Sinatra::Application  # should this be Sinatra::Base instead
     render_page
   end
 
-  get "/:file.:ext" do
-    # treat root URLs with dots in them like static assets and serve them
-    #   from the downstream file server (coderay.css, jquery-1.6.1.js)
-    forward
-  end
-
   get "/:site" do
     # add a slash to any URLs that contain only a site
     #   (otherwise paths in that site's pages would resolve

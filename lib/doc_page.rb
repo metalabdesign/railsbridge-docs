@@ -35,7 +35,7 @@ class DocPage < Erector::Widgets::Page
     title page_title
     link :href => stylesheet_path("doc_page"), :rel => "stylesheet", :type => "text/css"
     link :href => stylesheet_path("steps"), :rel => "stylesheet", :type => "text/css"
-    script :src => "/jquery-1.6.1.js"
+    script :src => javascript_path("jquery-1.6.1.js")
   end
 
   def site_title

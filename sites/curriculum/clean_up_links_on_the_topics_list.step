@@ -1,8 +1,6 @@
 goals do
   message "Our app is nearly done! The main topics listing page is pretty busy. There are a lot of links that aren't necessary."
-
   message "Let's clean up the topics list page by doing the following:"
-
   goal "Remove the 'show' link"
   goal "Remove the 'edit' link"
   goal "Change 'destroy' to 'delete'"
@@ -11,7 +9,7 @@ end
 steps do
   step "Remove the 'show' and 'edit' links" do
     message "Open `app/views/topics/index.html.erb` and remove these two lines:"
-    source_code :erb, <<-HTML
+    source <<-HTML, :erb
 <td><%= link_to 'Show', topic %></td>
 <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
     HTML
@@ -19,14 +17,13 @@ steps do
 
   step "Change 'destroy' to 'delete'" do
     message "Change the line with the word 'Destroy' to this:"
-    source_code :erb, "<td><%= link_to 'Delete', topic, :confirm => 'Are you sure?', :method => :delete %></td>"
+    source "<td><%= link_to 'Delete', topic, :confirm => 'Are you sure?', :method => :delete %></td>", :erb
   end
 
   step "Confirm your changes" do
     message "Now save your file and try reloading in your browser to see the changes."
   end
 end
-
 
 explanation do
   message <<-MARKDOWN

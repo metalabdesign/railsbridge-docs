@@ -11,38 +11,38 @@ steps do
   tip "If you have _any_ problems, contact a TA immediately."
 
   step do
-    console "mkdir railsbridge", :bash
+    console "mkdir railsbridge"
     message "'mkdir' stands for make directory (folder)."
     message "We've made a folder called `railsbridge`."
   end
 
   step do
-    console "cd railsbridge", :bash
+    console "cd railsbridge"
     message "'cd' stands for change directory."
     message "'cd railsbridge' makes railsbridge our current directory."
   end
 
   step do
-    console "rails new suggestotron", :bash
+    console "rails new suggestotron"
     message "'rails new' creates a new rails project with the name you give."
     message "In this case we told it to create a new project called `suggestotron`. We'll go into detail on what it created shortly."
   end
 
   step do
-    console "cd suggestotron", :bash
+    console "cd suggestotron"
     message "'cd' stands for change directory."
     message "'cd suggestotron' makes suggestotron our current directory."
   end
 
   step do
-    console "ls", :bash
+    console "ls"
     message "'ls' stands for 'list (stuff)'."
     message "It shows you the contents of the current folder."
   end
 
   message <<-MARKDOWN
-  You can see that <code>rails new</code> created a lot directories and
-  files. The ones we want to focus on today are:
+You can see that <code>rails new</code> created a lot directories and
+files. The ones we want to focus on today are:
   MARKDOWN
 
   table :border=>"1", :cellspacing=>"0", :cellpadding=>"3", :align=>"center" do

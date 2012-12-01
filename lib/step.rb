@@ -307,20 +307,19 @@ div.back:before {
   TERMINAL_CAPTION = "Type this in the terminal:"
   RESULT_CAPTION = "Expected result:"
 
-  def console msg, lang = nil
-    div :class => "console" do
-      span TERMINAL_CAPTION
-      if lang
-        div raw Pygments.highlight(msg, lexer: lang.to_s)
-      else
-        pre msg
-      end
+  def source code, lang = nil
+    if lang
+      div raw Pygments.highlight(code, lexer: lang.to_s)
+    else
+      pre code
     end
   end
 
-  # note: deprecated, use `console`
-  def source_code lang, msg
-    console msg, lang
+  def console msg
+    div :class => "console" do
+      span TERMINAL_CAPTION
+      source msg, :bash
+    end
   end
 
   def result text

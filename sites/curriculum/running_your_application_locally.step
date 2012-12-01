@@ -2,14 +2,14 @@ goals do
   goal "Let's fire up the application locally"
 end
 
-
 steps do
   step do
-    console "bundle\nrails server", :bash
+    console "bundle\nrails server"
   end
+
   step do
     text "Point your web browser to "
-    url "http://localhost:3000" 
+    url "http://localhost:3000"
     p "See your web app actually running!"
   end
 

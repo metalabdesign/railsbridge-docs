@@ -3,12 +3,9 @@ goals do
 end
 
 steps do
-
   step "Add the button to the view" do
-
     message "Edit `app/views/topics/index.html.erb` so that the bottom loop looks like this:"
-
-    source_code :erb, <<-HTML
+    source <<-HTML, :erb
 <% @topics.each do |topic| %>
   <tr>
     <td><%= topic.title %></td>
@@ -25,7 +22,7 @@ steps do
 
   step "Add the create method to the controller" do
     message "Add the following method to `Vote` in `app/controllers/votes_controller.rb`:"
-    source_code :ruby, <<-RUBY
+    source <<-RUBY, :ruby
 class VotesController < ApplicationController
   def create
     topic = Topic.find(params[:topic_id])
@@ -44,28 +41,26 @@ end
 end
 
 explanation do
-
   message "First we added these two lines to `app/views/topics/index.html.erb`"
-  source_code :erb, <<-HTML
-  <td><%= pluralize(topic.votes.length, "vote") %></td>
-  <td><%= button_to '+1', votes_path(topic_id: topic.id), method: :post %></td>
+  source <<-HTML, :erb
+<td><%= pluralize(topic.votes.length, "vote") %></td>
+<td><%= button_to '+1', votes_path(topic_id: topic.id), method: :post %></td>
   HTML
-
   message <<-MARKDOWN
-  * `pluralize(topic.votes.length, "vote")` displays the number of votes the topic has, plus the word 'vote' or 'votes' accordingly.
-  * `button_to '+1'` creates an html button with the value '+1'.
-  * `votes_path(topic_id: topic.id)` creates the right url for the action we want to invoke. In this case, we want to create a vote for the current topic.
-    * `votes_path(topic_id: 42)` would output `/votes?topic_id=42`
-  * `method: :post` ensures we do the create action of CRUD, not the read action.
+* `pluralize(topic.votes.length, "vote")` displays the number of votes the topic has, plus the word 'vote' or 'votes' accordingly.
+* `button_to '+1'` creates an html button with the value '+1'.
+* `votes_path(topic_id: topic.id)` creates the right url for the action we want to invoke. In this case, we want to create a vote for the current topic.
+  * `votes_path(topic_id: 42)` would output `/votes?topic_id=42`
+* `method: :post` ensures we do the create action of CRUD, not the read action.
 
-  The changes we made to votes controller are a bit more complicated so let's work through them line by line.
+The changes we made to votes controller are a bit more complicated so let's work through them line by line.
 
-  * `topic = Topic.find(params[:topic_id])`
-    * Finds the topic in the database with that id and stores it in the variable 'topic'.
-    * `params[:topic_id]` corresponds to the topic_id part of the votes_path above (eg `?topic_id=42`).
-  * `vote = topic.votes.build` creates a new vote for the current topic.
-  * `vote.save!` saves the vote to the database.
-  * `redirect_to(topics_path)` tells the browser to go back to topics_path (the topics list).
+* `topic = Topic.find(params[:topic_id])`
+  * Finds the topic in the database with that id and stores it in the variable 'topic'.
+  * `params[:topic_id]` corresponds to the topic_id part of the votes_path above (eg `?topic_id=42`).
+* `vote = topic.votes.build` creates a new vote for the current topic.
+* `vote.save!` saves the vote to the database.
+* `redirect_to(topics_path)` tells the browser to go back to topics_path (the topics list).
   MARKDOWN
 end
 

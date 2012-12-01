@@ -1,5 +1,4 @@
 goals do
-
   message <<-MARKDOWN
 At the core, most database driven web sites are the same. They need to store records and provide a way to do the following:
 
@@ -13,15 +12,13 @@ Because these 4 actions (CRUD) are so common, rails includes the scaffold comman
 end
 
 steps do
-
   step do
-    console "rails server", :bash
+    console "rails server"
   end
 
   step do
     message "Point your browser to [http://localhost:3000/topics](http://localhost:3000/topics)"
     message "You should see a page listing topics that looks something like this:"
-
     img :src => "img/Seattle_topic_list_page.png", :alt => "Topic List Page"
   end
 
@@ -31,7 +28,6 @@ steps do
 * Fill in the form and click "Create Topic"
 * You should see a confirmation page like this:
     MARKDOWN
-
     img :alt=> "topic created", :src => "img/Seattle_topic_created.png"
   end
 
@@ -49,7 +45,6 @@ steps do
 end
 
 explanation do
-
   message <<-MARKDOWN
 How did all those pages get created and hooked together? The rails scaffold did it for you.
 

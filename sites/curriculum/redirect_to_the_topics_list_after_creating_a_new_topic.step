@@ -1,31 +1,21 @@
 goals do
-
   message <<-MARKDOWN
 When a user creates a new topic they are currently shown a page with
 just that topic. For our voting app it makes more sense that they
 would be taken back to the topic list.
   MARKDOWN
-
   goal "In this step we'll change the flow of our app so that the user is taken back to the topics list after they add a new topic."
 end
 
 steps do
-
   step "Change the topics controller" do
-
     message "Open `app/controllers/topics_controller.rb` and look at the create method. "
-
     message "Find the line:"
-
-    source_code :ruby, "format.html { redirect_to @topic, :notice => 'Topic was successfully created.' }"
-
-    message 'and change `@topic` to `topics_path` like this:'
-
-    source_code :ruby, "format.html { redirect_to topics_path, :notice => 'Topic was successfully created.' }"
-
-    message 'so that the file looks like this:'
-
-    source_code :ruby, <<-RUBY
+    source "format.html { redirect_to @topic, :notice => 'Topic was successfully created.' }", :ruby
+    message "and change `@topic` to `topics_path` like this:"
+    source "format.html { redirect_to topics_path, :notice => 'Topic was successfully created.' }", :ruby
+    message "so that the file looks like this:"
+    source <<-RUBY, :ruby
 def create
   @topic = Topic.new(params[:topic])
 
@@ -43,15 +33,13 @@ end
   end
 
   step "Add the flash message to your application view" do
-      message "Open `app/views/layouts/application.html.erb`."
-
-      message "Find the `<body>` HTML tag and immediately after add the following code:"
-
-      source_code :ruby, <<-RUBY
+    message "Open `app/views/layouts/application.html.erb`."
+    message "Find the `<body>` HTML tag and immediately after add the following code:"
+    source <<-HTML, :erb
 <% flash.each do |name, msg| %>
     <div><%= msg %></div>
 <% end %>
-      RUBY
+    HTML
   end
 
   step "Confirm your changes" do
@@ -59,9 +47,7 @@ end
   end
 end
 
-
 explanation do
-
   message <<-MARKDOWN
 * `format.html { redirect_to topics_path, :notice => 'Topic was successfully created.' }`:
 * `format.html` means that the server should send html back to the browser

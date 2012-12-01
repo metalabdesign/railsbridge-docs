@@ -1,11 +1,7 @@
 goals do
-
   img :alt => "Topics Table", :src => "img/topics_table.png"
-
   message "The suggestotron has a list of topics that people can vote on. We'll store our topics in the database. In this step you'll do the following:"
-
   goal "Create a database table for topics with a title and a description"
-
   message "In this step we'll learn a bit about MVC (Model-View-Controller) architecture. By the end of this step you should understand the following concepts:"
 
   ul do
@@ -17,10 +13,8 @@ goals do
 end
 
 steps do
-
-
   step do
-    console "rails generate scaffold topic title:string description:text", :bash
+    console "rails generate scaffold topic title:string description:text"
     message <<-MARKDOWN
 * `generate scaffold` tells rails to create everything necessary to get up and running with topics.
 * `topic` tells rails the name of the new model.
@@ -31,17 +25,14 @@ steps do
   end
 
   step do
-    console "rake db:migrate", :bash
+    console "rake db:migrate"
     message "This tells rails to update the database to include a table for our new model."
   end
 end
 
 explanation do
-
   h2 "Explaining MVC and Records"
-
   img :src => "img/mvc.png", :alt => "MVC"
-
   message "Rails implements a very specific notion of the **Model/View/Controller** pattern, which guides how you structure your web applications."
 
   h3 "Model"

@@ -71,7 +71,7 @@ Whenever instructions start with `"$ "`, type the rest of the line into terminal
 
 Let's give the terminal a `command`, to open Interactive Ruby (IRB)
 
-``` bash-session
+``` bash
 $ irb
 ```
 
@@ -81,7 +81,7 @@ $ irb
 
 IRB has its own prompt, which customarily ends with `>`
 
-``` bash-session
+``` bash
 $ irb
 >
 ```
@@ -100,7 +100,7 @@ Now you're back to the terminal's prompt.
 
 Some people have experienced trouble with backspace, delete, and arrow keys working properly in irb - what a pain! If you run into this problem, use this command instead to launch irb.
 
-``` bash-session
+``` bash
 $ irb --noreadline
 ```
 
@@ -681,7 +681,7 @@ puts "Hello, World!"
 
 We can tell the ruby interpreter to run our code:
 
-``` bash-session
+``` bash
 $ ruby hello.rb
 Hello World!
 ```
@@ -700,7 +700,7 @@ puts "Hello, #{ARGV.first}!"
 
 ... and run it:
 
-``` bash-session
+``` bash
 $ ruby hello.rb Alice
 Hello, Alice!
 ```

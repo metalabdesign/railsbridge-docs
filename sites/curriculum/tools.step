@@ -2,6 +2,7 @@ message <<-MARKDOWN
 ## Other Tools to help you learn Ruby
 
 ### ri
+#
 ri is a tool to look up ruby documentation. It lives on your computer, so if you're in a plane or underground bunker and can't get to google, all the information is right within the terminal! If you do prefer the internet, you can get the same information at [ruby-doc.org](http://ruby-doc.org).
 
     $ ri String.split
@@ -19,10 +20,13 @@ ri is a tool to look up ruby documentation. It lives on your computer, so if you
 
 MARKDOWN
 
-important "If running ri doesn't work and you've installed ruby using rvm, try running this command first:
+important <<-MARKDOWN
+If running ri doesn't work and you've installed ruby using rvm, try running this command first:
 
-    $ rvm docs generate
-"
+``` bash
+$ rvm docs generate
+```
+MARKDOWN
 
 message <<-MARKDOWN
 You can do a lot with it:
@@ -43,7 +47,6 @@ You can do stuff like:
 ```
 
 All of these methods are available for any string. You can then use `ri` to look up the method documentation. It is a great way to find goodies!
-
 MARKDOWN
 
 next_step "getting_started"

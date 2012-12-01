@@ -8,23 +8,23 @@ end
 
 steps do
   step do
-    console "irb"
+    console "irb", :bash
     message "Starts up the **I**nteractive **R**u**b**y Shell an environment where you can try bits of ruby code and they'll be run automatically."
   end
 
   step do
-    console "3 + 3\n7 * 6"
+    console "3 + 3\n7 * 6", :ruby
     message "Ruby can do simple math automatically. `*` is used for multiplication and `/` for division."
   end
 
   step do
-    console "my_variable = 5"
+    console "my_variable = 5", :ruby
 
     message "Variables are words that hold information. Here we're holding a 5 with the word `my_variable`."
   end
 
   step do
-    console <<-RUBY
+    console <<-RUBY, :ruby
 my_variable + 2
 my_variable * 3
     RUBY
@@ -34,21 +34,21 @@ my_variable * 3
   end
 
   step do
-    console "puts my_variable"
+    console "puts my_variable", :ruby
 
     message "`puts` prints the value of what comes after it. In this case it should print 5 since `my_variable` is holding a `5`."
 
   end
 
   step do
-    console 'fruits = ["kiwi", "strawberry", "plum"]'
+    console 'fruits = ["kiwi", "strawberry", "plum"]', :ruby
 
     message "Variables can also hold more than one value. Here we're using the variable `fruits` to hold a collection of fruit names. This type of collection is called an array."
 
   end
 
   step do
-    console <<-RUBY
+    console <<-RUBY, :ruby
 fruits + ["orange"]
 fruits - ["kiwi"]
     RUBY
@@ -58,7 +58,7 @@ fruits - ["kiwi"]
   end
 
   step do
-    console <<-RUBY
+    console <<-RUBY, :ruby
 fruits.each do |f|
   puts f
 end
@@ -68,7 +68,7 @@ end
   end
 
   step do
-    console <<-RUBY
+    console <<-RUBY, :ruby
 if my_variable > 1
   puts "YAY!"
 end

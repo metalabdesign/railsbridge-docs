@@ -1,14 +1,15 @@
-goals {
+goals do
 
-  message "
-  When a user creates a new topic they are currently shown a page with
-  just that topic. For our voting app it makes more sense that they
-  would be taken back to the topic list."
+  message <<-MARKDOWN
+When a user creates a new topic they are currently shown a page with
+just that topic. For our voting app it makes more sense that they
+would be taken back to the topic list.
+  MARKDOWN
 
   goal "In this step we'll change the flow of our app so that the user is taken back to the topics list after they add a new topic."
-}
+end
 
-steps {
+steps do
 
   step "Change the topics controller" do
 
@@ -56,17 +57,17 @@ end
   step "Confirm your changes" do
     message "Look at <http://localhost:3000>."
   end
-}
+end
 
 
-explanation {
+explanation do
 
   message <<-MARKDOWN
-  * `format.html { redirect_to topics_path, :notice => 'Topic was successfully created.' }`:
-    * `format.html` means that the server should send html back to the browser
-    * `redirect_to topics_path` means show the **topics list page** when we're done creating a topic
-    * `:notice => 'Topic was successfully created.'` puts the message into the flash so it will be displayed on the topics list
+* `format.html { redirect_to topics_path, :notice => 'Topic was successfully created.' }`:
+* `format.html` means that the server should send html back to the browser
+* `redirect_to topics_path` means show the **topics list page** when we're done creating a topic
+* `:notice => 'Topic was successfully created.'` puts the message into the flash so it will be displayed on the topics list
   MARKDOWN
-}
+end
 
 next_step "make_the_topic_title_a_link"

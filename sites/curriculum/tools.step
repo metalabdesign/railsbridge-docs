@@ -37,9 +37,10 @@ We've already introduced irb above, but it can't be stressed enough that having 
 
 You can do stuff like:
 
-    $ irb
-    >> "blah".methods
-    => [:<=>, :==, :===, :eql?, :hash, :casecmp...]
+``` irb
+>> "blah".methods
+=> [:<=>, :==, :===, :eql?, :hash, :casecmp...]
+```
 
 All of these methods are available for any string. You can then use `ri` to look up the method documentation. It is a great way to find goodies!
 

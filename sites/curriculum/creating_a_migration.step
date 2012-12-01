@@ -1,4 +1,4 @@
-goals {
+goals do
 
   img :alt => "Topics Table", :src => "img/topics_table.png"
 
@@ -8,19 +8,19 @@ goals {
 
   message "In this step we'll learn a bit about MVC (Model-View-Controller) architecture. By the end of this step you should understand the following concepts:"
 
-  ul {
+  ul do
     li "A record"
     li "Model"
     li "View"
     li "Controller"
-  }
-}
+  end
+end
 
-steps {
+steps do
 
 
-  step {
-    console "rails generate scaffold topic title:string description:text"
+  step do
+    console "rails generate scaffold topic title:string description:text", :bash
     message <<-MARKDOWN
 * `generate scaffold` tells rails to create everything necessary to get up and running with topics.
 * `topic` tells rails the name of the new model.
@@ -28,15 +28,15 @@ steps {
 * `description:text` says that topics have a description which is a "text". (We're befuddled by the difference too.)
     MARKDOWN
     message "If you want, take some time to poke around the files listed in this step."
-  }
+  end
 
-  step {
-    console "rake db:migrate"
+  step do
+    console "rake db:migrate", :bash
     message "This tells rails to update the database to include a table for our new model."
-  }
-}
+  end
+end
 
-explanation {
+explanation do
 
   h2 "Explaining MVC and Records"
 
@@ -67,6 +67,6 @@ explanation {
   message <<-MARKDOWN
 In MVC, models, views, and controllers have very specific jobs.  Separating responsibilities like this make it easy to maintain and extend rails applications.  When responsibilities become muddied it gets much harder to debug issues and add new functionality.
   MARKDOWN
-}
+end
 
 next_step "CRUD_with_scaffolding"

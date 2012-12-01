@@ -4,7 +4,7 @@ goals do
 end
 
 step do
-  console "git init"
+  console "git init", :bash
 end
 
 explanation do

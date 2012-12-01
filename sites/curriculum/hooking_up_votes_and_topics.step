@@ -1,15 +1,15 @@
-goals {
+goals do
 
   img :alt => "topics_and_votes_table", :src => "img/topics_and_votes_table.png"
 
   goal "Because there is an explicit relationship between a topic and its
   votes, we need to specify that. In this step, we'll explicitly
   declare the relationship between votes and topics."
-}
+end
 
-steps {
+steps do
 
-  step {
+  step do
     message "Edit `app/models/topic.rb` so that it looks like this:"
 
     source_code :ruby, <<-RUBY
@@ -18,9 +18,9 @@ class Topic < ActiveRecord::Base
   has_many :votes
 end
     RUBY
-  }
+  end
 
-  step {
+  step do
     message "Edit `app/models/vote.rb` so that it looks like this:"
     source_code :ruby, <<-RUBY
 class Vote < ActiveRecord::Base
@@ -28,10 +28,10 @@ class Vote < ActiveRecord::Base
   belongs_to :topic
 end
     RUBY
-  }
-}
+  end
+end
 
-explanation {
+explanation do
 
   message <<-MARKDOWN
 
@@ -48,6 +48,6 @@ explanation {
     * When you ask a vote for its topic, you get the topic for that
       vote.
   MARKDOWN
-}
+end
 
 next_step "allow_people_to_vote"

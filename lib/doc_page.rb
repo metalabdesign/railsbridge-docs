@@ -1,5 +1,6 @@
-require 'erector'
 require 'contents'
+require 'erector'
+require 'pygments'
 require 'site_index'
 
 class InstallfestExternalRenderer < ExternalRenderer
@@ -65,9 +66,7 @@ class DocPage < Erector::Widgets::Page
   @import url(/font/opensans.css);
   CSS
 
-  external :style,  <<-CSS
-  @import url(/css/fruidle.css);
-  CSS
+  external :style, Pygments.css(".highlight", style: "monokai")
 
   external :style,  <<-CSS
   body {

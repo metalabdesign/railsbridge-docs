@@ -1,9 +1,10 @@
 require 'erector'
 require 'big_checkbox'
 require 'erector_scss'
+require 'redcarpet'
+require 'markdown_renderer'
 
 class Step < Erector::Widget
-  include GithubFlavoredMarkdown
 
   external :style, scss(<<-CSS)
 .step {
@@ -278,7 +279,7 @@ div.back:before {
     classes = (["message"] + [options[:class]]).compact
     div :class => classes do
       img.icon src: "/img/#{options[:icon]}.png" if options[:icon]
-      rawtext(md2html text) unless text.nil?
+      rawtext(markdown.render text) unless text.nil?
       yield if block_given?
     end
   end
@@ -306,11 +307,20 @@ div.back:before {
   TERMINAL_CAPTION = "Type this in the terminal:"
   RESULT_CAPTION = "Expected result:"
 
-  def console msg
+  def console msg, lang = nil
     div :class => "console" do
       span TERMINAL_CAPTION
-      pre msg
+      if lang
+        div raw Pygments.highlight(msg, lexer: lang.to_s)
+      else
+        pre msg
+      end
     end
+  end
+
+  # note: deprecated, use `console`
+  def source_code lang, msg
+    console msg, lang
   end
 
   def result text
@@ -324,14 +334,20 @@ div.back:before {
     eval @src, binding, @doc_path, 1
   end
 
-  def source_code *args
-    src = args.pop
-    lang = args.pop
-    src = "\n:::#{lang}\n#{src}" if lang
-    pre src, :class => "code"
-  end
-
   private
+
+  def markdown
+    @@markdown ||= Redcarpet::Markdown.new(
+      MarkdownRenderer,
+      :autolink           => true,
+      :fenced_code_blocks => true,
+      :lax_spacing        => true,
+      :no_intra_emphasis  => true,
+      :strikethrough      => true,
+      :superscript        => true,
+      :tables             => true
+    )
+  end
 
   def _render_inner_content
     blockquote do

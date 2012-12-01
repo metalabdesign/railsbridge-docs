@@ -1,7 +1,6 @@
 require 'erector'
-require "github_flavored_markdown"
-require "contents"
-require "site_index"
+require 'contents'
+require 'site_index'
 
 class InstallfestExternalRenderer < ExternalRenderer
   # render <style> tags plainly, without "text/css" (which browsers will assume by default)
@@ -20,7 +19,6 @@ class InstallfestExternalRenderer < ExternalRenderer
 end
 
 class DocPage < Erector::Widgets::Page
-  include GithubFlavoredMarkdown
 
   needs :site_name, :doc_title, :doc_path, :page_name
   needs :back => nil
@@ -68,7 +66,7 @@ class DocPage < Erector::Widgets::Page
   CSS
 
   external :style,  <<-CSS
-  @import url(/css/coderay.css);
+  @import url(/css/fruidle.css);
   CSS
 
   external :style,  <<-CSS

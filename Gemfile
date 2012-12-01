@@ -3,12 +3,11 @@ source :rubygems
 gem "erector", "~>0.9.0.pre1"
 gem "sinatra"
 gem "nokogiri"
-gem "rdiscount"
+gem "redcarpet"
 gem "thin"
 gem "eventmachine", "1.0.0.rc.4"
-gem 'rack-codehighlighter'
-gem 'coderay'
-gem "deckrb", ">=0.3.0"
+# gem "deckrb", ">=0.3.0"
+gem "deckrb", git: "git://github.com/gf3/deck.rb.git", branch: "code-highlighting"
 gem "sass"
 
 group :development do

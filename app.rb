@@ -1,17 +1,7 @@
 require 'sinatra'
 require 'digest/md5'
 require 'erector'
-
-# require 'wrong'
-# include Wrong::D
-
-begin
-  require 'rdiscount'
-rescue LoadError
-  require 'bluecloth'
-  Object.send(:remove_const,:Markdown)
-  Markdown = BlueCloth
-end
+require 'redcarpet'
 
 here = File.expand_path File.dirname(__FILE__)
 lib = File.expand_path "#{here}/lib"
